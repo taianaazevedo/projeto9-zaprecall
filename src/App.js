@@ -1,20 +1,23 @@
 import styled from "styled-components";
 import Logo from "./components/Logo";
-import Pergunta from "./components/Pergunta";
+import Perguntas from "./components/Perguntas";
 import Footer from "./components/Footer";
+import { useState } from "react";
 
 export default function App() {
+  const [concluidos, setConcluidos] = useState(0);
+  const [questao, setQuestao] = useState("");
 
   return (
     <Container>
-      <Logo/>
-      <Pergunta/>
-      <Footer/>
+      <Logo />
+      <Perguntas />
+      <Footer />
     </Container>
   );
 }
 
-const Container = styled.div `
+const Container = styled.div`
   background-color: #FB6B6B;
   width: 100vw;
   min-height: 100vh;
