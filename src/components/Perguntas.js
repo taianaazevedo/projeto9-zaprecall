@@ -13,10 +13,10 @@ export default function Perguntas({ index, question, answer }) {
     const [mostraPergunta, setMostraPergunta] = useState(false); //questão das perguntas
     const [mostraResposta, setMostraResposta] = useState(false); //resposta das questões
     const [mostraFinalizada, setMostraFinalizada] = useState(false); //pergunta riscada
-    const [color, setColor] = useState("") // cor da letra finalizada
+    const [cor, setCor] = useState("") // cor da letra finalizada
     const [img, setImg] = useState(seta_play); //icone da resposta respondida
 
-    function clicaCarta() {        
+    function clicaCarta() {
         setMostraPergunta(true);
         setMostraFechada(false);
     }
@@ -26,20 +26,20 @@ export default function Perguntas({ index, question, answer }) {
         setMostraResposta(true);
     }
 
-    function finalizar(cor){
+    function finalizar(cor) {
         console.log(cor)
         setMostraResposta(false);
         setMostraFinalizada(true);
-        if(cor === "#FF3030"){
-            setColor("#FF3030");
+        if (cor === "#FF3030") {
+            setCor("#FF3030");
             setImg(icone_erro);
         }
-        if(cor === "#FF922E"){
-            setColor("#FF922E");
+        if (cor === "#FF922E") {
+            setCor("#FF922E");
             setImg(icone_quase);
         }
-        if(cor === "#2FBE34"){
-            setColor("#2FBE34");
+        if (cor === "#2FBE34") {
+            setCor("#2FBE34");
             setImg(icone_certo);
         }
     }
@@ -52,10 +52,12 @@ export default function Perguntas({ index, question, answer }) {
                     onClick={() => clicaCarta()}
                 />
             </PerguntaFechada>}
+
             {mostraPergunta && <Cards >
                 <img src={seta_virar} onClick={() => mostrarResposta()} alt="" />
                 <p>{question}</p>
             </Cards>}
+
             {mostraResposta && <Resposta>
                 <div>{answer}</div>
                 <Botao>
@@ -64,9 +66,10 @@ export default function Perguntas({ index, question, answer }) {
                     <BotaoDiv cor="#2FBE34" onClick={() => finalizar("#2FBE34")}>Zap!</BotaoDiv>
                 </Botao>
             </Resposta>}
-            {mostraFinalizada && <PerguntaFinalizada>
-                <p color={color}>Pergunta {index}</p>
-                <img src={img} alt=""/>
+
+            {mostraFinalizada && <PerguntaFinalizada cor={cor}>
+                <p>Pergunta {index}</p>
+                <img src={img} alt="" />
             </PerguntaFinalizada>}
 
         </>
@@ -92,7 +95,7 @@ const PerguntaFinalizada = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  color: ${props => props.color};
+  color: ${props => props.cor};
   }
 
 `
