@@ -1,51 +1,51 @@
 import styled from "styled-components";
-import seta_play from "../assets/img/seta_play.png"
-import seta_virar from "../assets/img/seta_virar.png"
+import seta_play from "../assets/img/seta_play.png";
+import seta_virar from "../assets/img/seta_virar.png";
+import { useState } from "react";
 
 
-export default function Perguntas() {
-   
 
-    const perguntas = [
-        { pergunta: "Pergunta 1", key: 1 },
-        { pergunta: "Pergunta 2", key: 2 },
-        { pergunta: "Pergunta 3", key: 3 },
-        { pergunta: "Pergunta 4", key: 4 },
-        { pergunta: "Pergunta 5", key: 5 },
-        { pergunta: "Pergunta 6", key: 6 },
-        { pergunta: "Pergunta 7", key: 7 },
-        { pergunta: "Pergunta 8", key: 8 }
-    ]
+export default function Perguntas({ index, question, answer }) {
 
-    const cards = [
-        { question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript", key: 1 },
-        { question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces", key: 2 },
-        { question: "Componentes devem iniciar com __", answer: "Letra maiúscula", key: 3 },
-        { question: "Podemos colocar __ dentro do JSX", answer: "expressões", key: 4 },
-        { question: "O ReactDOM nos ajuda __", answer: "Interagindo com a DOM para colocar componentes React na mesma", key: 5 },
-        { question: "Usamos o npm para __", answer: "Gerenciar os pacotes necessários e suas dependências", key: 6 },
-        { question: "Usamos props para __", answer: "Passar diferentes informações para componentes", key: 7 },
-        { question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente", key: 8 }
-    ]
+    const [perguntaClicada, setPerguntaClicada] = useState([]); // array da pergunta fechada, da tela incial
+    const [mostraFechada, setMostraFechada] = useState(true) //pergunta fechada com o play
+    const [mostraPergunta, setMostraPergunta] = useState(false) //questão das perguntas
+    const [mostrarResposta, setMostrarResposta] = useState(false)
 
-   
+    function clicaCarta(pergunta) {
+        const novoArray = [...perguntaClicada, pergunta]
+        setPerguntaClicada(novoArray);
+        console.log(novoArray)
+        setMostraPergunta(true)
+        setMostraFechada(false)
+    }
+
+    function mostraResposta() {
+        setMostraPergunta(false);
+        setMostrarResposta(true);
+    }
 
     return (
         <>
-            {perguntas.map((pergunta) =>
-                <div>
-                    <PerguntaFechada key={pergunta.key}>
-                        <p>{pergunta.pergunta}</p>
-                        <img src={seta_play} />
-                    </PerguntaFechada>
-                </div>)}
-            {cards.map((card) =>
-                <div>
-                    <Perguntaaberta key={card.key}>
-                        <img src={seta_virar}/>
-                        {card.question}                   
-                    </Perguntaaberta>
-                </div>)}
+            {mostraFechada && <PerguntaFechada>
+                <p>Pergunta {index}</p>
+                <img src={seta_play} alt=""
+                    onClick={() => clicaCarta()}
+                />
+            </PerguntaFechada>}
+            {mostraPergunta && <Cards >
+                <img src={seta_virar} onClick={() => mostraResposta()} alt="" />
+                <p>{question}</p>
+            </Cards>}
+            {mostrarResposta && <Resposta>
+                <div>{answer}</div>
+                <Botao>
+                    <BotaoDiv cor="#FF3030">Não lembrei</BotaoDiv>
+                    <BotaoDiv cor="#FF922E">Quase não lembrei</BotaoDiv>
+                    <BotaoDiv cor="#2FBE34">Zap!</BotaoDiv>
+                </Botao>
+            </Resposta>}
+
         </>
     )
 }
@@ -61,6 +61,7 @@ const PerguntaFechada = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  
     p {
   font-family: 'Recursive';
   font-style: normal;
@@ -72,7 +73,7 @@ const PerguntaFechada = styled.div`
 
 `
 
-const Perguntaaberta = styled.div`
+const Cards = styled.div`
     width: 300px;
   margin: 12px;
   padding: 15px;
@@ -97,3 +98,48 @@ const Perguntaaberta = styled.div`
 }
 `
 
+const Resposta = styled.div`
+   width: 300px;
+  margin: 12px;
+  padding: 15px;
+  min-height: 100px;
+  background: #FFFFD5;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #333333;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+`
+
+const Botao = styled.div`
+display: flex;
+width:100%;
+
+`
+
+const BotaoDiv = styled.div`
+  width: 90px;
+  font-family: 'Recursive';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFFFFF;
+  background: ${props => props.cor};
+  border-radius: 5px;
+  border: 1px ${props => props.cor} blue;
+  padding:5px;
+  margin: 3px
+`

@@ -1,18 +1,15 @@
 import styled from "styled-components";
-import Logo from "./components/Logo";
-import Perguntas from "./components/Perguntas";
-import Footer from "./components/Footer";
-import { useState } from "react";
+import TelaInicial from "./components/TelaInicial";
+
+
+
 
 export default function App() {
-  const [concluidos, setConcluidos] = useState(0);
-  const [questao, setQuestao] = useState("");
+  
 
   return (
     <Container>
-      <Logo />
-      <Perguntas />
-      <Footer />
+      <TelaInicial />      
     </Container>
   );
 }
