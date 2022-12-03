@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export default function Footer (){
+export default function Footer ({contador}){
     return (
         <Rodape>
-           0/8 CONCLUÍDOS
+           {contador}/8 CONCLUÍDOS
         </Rodape>
     )
 }

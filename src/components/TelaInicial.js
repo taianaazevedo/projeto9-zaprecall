@@ -10,6 +10,7 @@ export default function TelaInicial() {
   const [mostraLogo, setMostraLogo] = useState(false);
   const [mostraCard, setMostraCard] = useState(false);
   const [mostraFooter, setMostraFooter] = useState(false);
+  const [contador, setContador] = useState(0);
 
 
   function iniciarJogo() {
@@ -29,8 +30,8 @@ export default function TelaInicial() {
       </div>
       </Tela>}
       {mostraLogo && <Logo />}
-      {mostraCard && <Card />}
-      {mostraFooter && <Footer />}
+      {mostraCard && <Card contador={contador} setContador={setContador}/>}
+      {mostraFooter && <Footer contador={contador} setContador={setContador}/>}
       </>
   )
 }

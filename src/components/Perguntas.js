@@ -8,7 +8,7 @@ import icone_quase from "../assets/img/icone_quase.png";
 
 
 
-export default function Perguntas({ index, question, answer }) {
+export default function Perguntas({ index, question, answer, setContador, contador }) {
     const [mostraFechada, setMostraFechada] = useState(true); //pergunta fechada com o play
     const [mostraPergunta, setMostraPergunta] = useState(false); //questão das perguntas
     const [mostraResposta, setMostraResposta] = useState(false); //resposta das questões
@@ -33,14 +33,17 @@ export default function Perguntas({ index, question, answer }) {
         if (cor === "#FF3030") {
             setCor("#FF3030");
             setImg(icone_erro);
+            setContador(contador + 1);
         }
         if (cor === "#FF922E") {
             setCor("#FF922E");
             setImg(icone_quase);
+            setContador(contador + 1);
         }
         if (cor === "#2FBE34") {
             setCor("#2FBE34");
             setImg(icone_certo);
+            setContador(contador + 1);
         }
     }
 
