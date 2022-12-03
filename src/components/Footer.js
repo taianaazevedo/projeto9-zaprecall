@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export default function Footer ({contador}){
-    return (
-        <Rodape>
-           {contador}/8 CONCLUÍDOS
-        </Rodape>
-    )
+export default function Footer({ contador }) {
+  return (
+    <Rodape>
+      {contador}/8 CONCLUÍDOS
+    </Rodape>
+  )
 }
 
 const Rodape = styled.div`

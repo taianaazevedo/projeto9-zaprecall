@@ -16,6 +16,7 @@ export default function Perguntas({ index, question, answer, setContador, contad
     const [cor, setCor] = useState("") // cor da letra finalizada
     const [img, setImg] = useState(seta_play); //icone da resposta respondida
 
+
     function clicaCarta() {
         setMostraPergunta(true);
         setMostraFechada(false);
@@ -27,7 +28,6 @@ export default function Perguntas({ index, question, answer, setContador, contad
     }
 
     function finalizar(cor) {
-        console.log(cor)
         setMostraResposta(false);
         setMostraFinalizada(true);
         if (cor === "#FF3030") {

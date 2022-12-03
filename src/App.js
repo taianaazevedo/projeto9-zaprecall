@@ -3,13 +3,12 @@ import TelaInicial from "./components/TelaInicial";
 
 
 
-
 export default function App() {
-  
+
 
   return (
     <Container>
-      <TelaInicial />      
+      <TelaInicial />
     </Container>
   );
 }
