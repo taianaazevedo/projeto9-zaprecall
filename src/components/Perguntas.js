@@ -49,12 +49,12 @@ export default function Perguntas({ index, question, answer, setContador, contad
 
     return (
         <>
-            {mostraFechada && <PerguntaFechada>
+            {mostraFechada && <PerguntaFechada data-test="flashcard">
                 <p>Pergunta {index}</p>
                 <img src={seta_play} alt="" data-test="play-btn" onClick={() => clicaCarta()}/>
             </PerguntaFechada>}
 
-            {mostraPergunta && <Cards data-test="flashcard">
+            {mostraPergunta && <Cards>
                 <img src={seta_virar} onClick={() => mostrarResposta()} alt="" data-test="turn-btn"/>
                 <p data-test="flashcard-text">{question}</p>
             </Cards>}
