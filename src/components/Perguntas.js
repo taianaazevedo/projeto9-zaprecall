@@ -15,6 +15,7 @@ export default function Perguntas({ index, question, answer, setContador, contad
     const [mostraFinalizada, setMostraFinalizada] = useState(false); //pergunta riscada
     const [cor, setCor] = useState("") // cor da letra finalizada
     const [img, setImg] = useState(seta_play); //icone da resposta respondida
+    const [dataTest, setDataTest] = useState("");
 
 
     function clicaCarta() {
@@ -34,16 +35,19 @@ export default function Perguntas({ index, question, answer, setContador, contad
             setCor("#FF3030");
             setImg(icone_erro);
             setContador(contador + 1);
+            setDataTest("no-icon");
         }
         if (cor === "#FF922E") {
             setCor("#FF922E");
             setImg(icone_quase);
             setContador(contador + 1);
+            setDataTest("partial-icon")
         }
         if (cor === "#2FBE34") {
             setCor("#2FBE34");
             setImg(icone_certo);
             setContador(contador + 1);
+            setDataTest("zap-icon")
         }
     }
 
@@ -54,12 +58,12 @@ export default function Perguntas({ index, question, answer, setContador, contad
                 <img src={seta_play} alt="" data-test="play-btn" onClick={() => clicaCarta()}/>
             </PerguntaFechada>}
 
-            {mostraPergunta && <Cards>
+            {mostraPergunta && <Cards data-test="flashcard">
                 <img src={seta_virar} onClick={() => mostrarResposta()} alt="" data-test="turn-btn"/>
                 <p data-test="flashcard-text">{question}</p>
             </Cards>}
 
-            {mostraResposta && <Resposta>
+            {mostraResposta && <Resposta data-test="flashcard">
                 <div data-test="flashcard-text">{answer}</div>
                 <Botao>
                     <BotaoDiv cor="#FF3030" data-test="no-btn" onClick={() => finalizar("#FF3030")}>Não lembrei</BotaoDiv>
@@ -68,9 +72,9 @@ export default function Perguntas({ index, question, answer, setContador, contad
                 </Botao>
             </Resposta>}
 
-            {mostraFinalizada && <PerguntaFinalizada cor={cor}>
+            {mostraFinalizada && <PerguntaFinalizada cor={cor} data-test="flashcard">
                 <p data-test="flashcard-text">Pergunta {index}</p>
-                <img src={img} alt="" />
+                <img src={img} alt="" data-test={dataTest}/>
             </PerguntaFinalizada>}
 
         </>
