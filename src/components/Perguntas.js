@@ -15,7 +15,7 @@ export default function Perguntas({ index, question, answer, setContador, contad
     const [mostraFinalizada, setMostraFinalizada] = useState(false); //pergunta riscada
     const [cor, setCor] = useState("") // cor da letra finalizada
     const [img, setImg] = useState(seta_play); //icone da resposta respondida
-    const [dataTest, setDataTest] = useState("");
+    const [dataTest, setDataTest] = useState(""); //apenas para o data-test passar
 
 
     function clicaCarta() {
@@ -50,6 +50,7 @@ export default function Perguntas({ index, question, answer, setContador, contad
             setDataTest("zap-icon")
         }
     }
+
 
     return (
         <>
