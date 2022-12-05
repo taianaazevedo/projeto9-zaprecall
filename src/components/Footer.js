@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Footer({ contador }) {
   return (
     <Rodape>
-      {contador}/8 CONCLUÍDOS
+      <p data-test="footer">{contador}/8 CONCLUÍDOS</p>
     </Rodape>
   )
 }

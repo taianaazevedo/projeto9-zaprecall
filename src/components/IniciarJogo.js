@@ -15,7 +15,7 @@ export default function IniciarJogo({ setMostraTela, setMostraLogo, setMostraCar
             <div>
                 <img src={logo} alt="" />
                 <p>ZapRecall</p>
-                <button onClick={() => iniciarJogo()}>Iniciar Recall!</button>
+                <button onClick={() => iniciarJogo()} data-test="start-btn">Iniciar Recall!</button>
             </div>
         </Iniciar>
     )

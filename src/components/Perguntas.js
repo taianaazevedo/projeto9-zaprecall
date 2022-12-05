@@ -51,27 +51,25 @@ export default function Perguntas({ index, question, answer, setContador, contad
         <>
             {mostraFechada && <PerguntaFechada>
                 <p>Pergunta {index}</p>
-                <img src={seta_play} alt=""
-                    onClick={() => clicaCarta()}
-                />
+                <img src={seta_play} alt="" data-test="play-btn" onClick={() => clicaCarta()}/>
             </PerguntaFechada>}
 
-            {mostraPergunta && <Cards >
-                <img src={seta_virar} onClick={() => mostrarResposta()} alt="" />
-                <p>{question}</p>
+            {mostraPergunta && <Cards data-test="flashcard">
+                <img src={seta_virar} onClick={() => mostrarResposta()} alt="" data-test="turn-btn"/>
+                <p data-test="flashcard-text">{question}</p>
             </Cards>}
 
             {mostraResposta && <Resposta>
-                <div>{answer}</div>
+                <div data-test="flashcard-text">{answer}</div>
                 <Botao>
-                    <BotaoDiv cor="#FF3030" onClick={() => finalizar("#FF3030")}>Não lembrei</BotaoDiv>
-                    <BotaoDiv cor="#FF922E" onClick={() => finalizar("#FF922E")}>Quase não lembrei</BotaoDiv>
-                    <BotaoDiv cor="#2FBE34" onClick={() => finalizar("#2FBE34")}>Zap!</BotaoDiv>
+                    <BotaoDiv cor="#FF3030" data-test="no-btn" onClick={() => finalizar("#FF3030")}>Não lembrei</BotaoDiv>
+                    <BotaoDiv cor="#FF922E" data-test="partial-btn" onClick={() => finalizar("#FF922E")}>Quase não lembrei</BotaoDiv>
+                    <BotaoDiv cor="#2FBE34" data-test="zap-btn" onClick={() => finalizar("#2FBE34")}>Zap!</BotaoDiv>
                 </Botao>
             </Resposta>}
 
             {mostraFinalizada && <PerguntaFinalizada cor={cor}>
-                <p>Pergunta {index}</p>
+                <p data-test="flashcard-text">Pergunta {index}</p>
                 <img src={img} alt="" />
             </PerguntaFinalizada>}
 
@@ -192,7 +190,7 @@ const BotaoDiv = styled.div`
   color: #FFFFFF;
   background: ${props => props.cor};
   border-radius: 5px;
-  border: 1px ${props => props.cor} blue;
+  border: 1px ${props => props.cor};
   padding:5px;
   margin: 3px
 `

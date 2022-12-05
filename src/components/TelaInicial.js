@@ -12,6 +12,7 @@ export default function TelaInicial() {
   const [contador, setContador] = useState(0);
 
 
+
   return (
     <>
       {mostraTela && <Iniciar
@@ -24,8 +25,7 @@ export default function TelaInicial() {
         contador={contador}
         setContador={setContador} />}
       {mostraFooter && <Footer
-        contador={contador}
-        setContador={setContador} />}
+        contador={contador} />}
     </>
   )
 }

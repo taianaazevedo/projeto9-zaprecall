@@ -1,7 +1,7 @@
 
 import Perguntas from "./Perguntas";
 
-export default function Card({ contador, setContador }) {
+export default function Card({ contador, setContador}) {
     const cards = [
         { question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript", key: 1 },
         { question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces", key: 2 },
